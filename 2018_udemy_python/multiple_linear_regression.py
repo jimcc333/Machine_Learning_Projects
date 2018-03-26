@@ -29,4 +29,11 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_
 # Build model
 regressor1 = LinearRegression()
 regressor1.fit(X_train, y_train)
+y_predicted = regressor1.predict(X_test)
+print("Error of each prediction (%):")
+for index in range(len(y_test)):
+    print(round(100*abs(y_test[index] - y_predicted[index])/(y_predicted[index]), 2),
+          end=', ')
+print()
 
+print("\n\nEnd of script.\n")
