@@ -1,4 +1,4 @@
-# Data preprocessing
+""" Data preprocessing script, parts used as a template. """
 # Author: Cem Bagdatlioglu
 
 # Import libraries
