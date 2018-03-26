@@ -3,10 +3,12 @@
 
 # Import libraries
 import pandas as pd
+import numpy as np
 from sklearn.preprocessing import LabelEncoder
 from sklearn.preprocessing import OneHotEncoder
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LinearRegression
+import statsmodels.formula.api as sm
 
 # Import data
 data_path = "D:\\Data Science\\2018_udemy_ml\\downloaded\\"
@@ -35,5 +37,9 @@ for index in range(len(y_test)):
     print(round(100*abs(y_test[index] - y_predicted[index])/(y_predicted[index]), 2),
           end=', ')
 print()
+
+# Optimize model using backwards feature elimination
+X = np.append(arr=np.ones((50, 1)).astype(int), values=X, axis=1)
+print(X)
 
 print("\n\nEnd of script.\n")
