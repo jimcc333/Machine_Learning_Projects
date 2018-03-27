@@ -3,6 +3,7 @@
 
 # Import libraries
 import pandas as pd
+import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
 from sklearn.preprocessing import PolynomialFeatures
 
@@ -15,14 +16,22 @@ X = dataset.iloc[:, 1:2].values
 y = dataset.iloc[:, -1].values
 
 # Create and fit a linear regressor
-linear_regressor = LinearRegression()
-linear_regressor.fit(X, y)
+linear_regressor1 = LinearRegression()
+linear_regressor1.fit(X, y)
 
 # Create and fit a polynomial regressor
 polynomial_regressor = PolynomialFeatures(degree=2)
 X_polynomial = polynomial_regressor.fit_transform(X)
-print(X_polynomial)
 linear_regressor2 = LinearRegression()
 linear_regressor2.fit(X_polynomial, y)
 
-
+# Show linear regression results
+plt.scatter(X, y, color="black")
+plt.plot(X, linear_regressor1.predict(X), color="red", label="Linear Model")
+plt.plot(X, linear_regressor2.predict(polynomial_regressor.fit_transform(X)),
+         color="blue", label="Polynomial Model")
+plt.xlabel("Level")
+plt.ylabel("Salary ($)")
+plt.title("Linear Regression Model")
+plt.legend()
+plt.show()
